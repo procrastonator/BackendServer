@@ -1,0 +1,30 @@
+[x]Create models
+- Project
+- Task
+
+
+Routes:
+
+[x] POST /api/projects
+  Project.create()
+  req.body
+
+- GET/api/projects
+
+- GET /api/projects
+    Project.find()
+
+- GET /api/projects/:projecId
+    Project.findByeD()
+
+- PUT /api/projects/:projectId
+  Project.findByIdAndUpdate(Id, {})
+
+- DELETE /api/projects/:projecId
+  Project.findByIdAndRemove()
+
+Task Routes:
+
+[x] POST /api/tasks
+    Task.create()
+    req.body
