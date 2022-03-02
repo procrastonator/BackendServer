@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
 
-const taskSchema = new Schema({
+const goalSchema = new Schema({
   title: String,
   description: String,
   project: { type: Schema.Types.ObjectId, 
@@ -9,4 +9,4 @@ const taskSchema = new Schema({
 required: true }
 });
 
-module.exports = model('Task', taskSchema);
+module.exports = model('Goal', goalSchema);

@@ -17,12 +17,18 @@ router.get("/loggedin", (req, res) => {
 });
 
 router.post("/signup", (req, res) => {
-  const { username, password } = req.body;
+  const { username, email, password } = req.body;
 
   if (!username) {
     return res
       .status(400)
       .json({ errorMessage: "Please provide your username." });
+  }
+
+  if (!email) {
+    return res
+      .status(400)
+      .json({ errorMessage: "Please provide your email." });
   }
 
   if (password.length < 8) {

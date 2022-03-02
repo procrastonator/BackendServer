@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Project = require("../models/Project.model")
 const mongoose =require("mongoose");
-const Task = require("../models/Task.model");
+const Goal = require("../models/Goal.model");
 
 router.post("/", (req, res) => {
     // console.log(req.body)
@@ -9,7 +9,7 @@ router.post("/", (req, res) => {
     const projectDetails = {
         title : req.body.title,
         description:  req.body.description,
-        tasks : []
+        goals : []
     }
     Project.create(projectDetails)
     .then( projectCreated => {
@@ -27,7 +27,7 @@ router.post("/", (req, res) => {
 
    router.get('/', (req, res, next) => {
     Project.find()
-    .populate('tasks')
+    .populate('goals')
       .then(allProjects => res.json(allProjects))
       .catch(err => res.json(err));
   });
@@ -42,7 +42,7 @@ router.get('/:projectId', (req, res, next) => {
     }
    
     Project.findById(projectId)
-    .populate('tasks')
+    .populate('goals')
     .then(project => res.json(project))
     .catch(err => res.status(500).json(err));
 });
@@ -59,7 +59,7 @@ router.put('/:projectId', (req, res, next) => {
     const projectDetails = {
         title: req.body.title,
         description: req.body.description,
-        tasks: req.body.tasks,
+        goals: req.body.goals,
       }
   
     Project.findByIdAndUpdate(projectId, projectDetails, { new: true })
@@ -78,7 +78,7 @@ router.delete('/:projectId', (req, res, next) => {
 
   Project.findByIdAndRemove(projectId)
     .then( deteletedProject => {
-        return Task.deleteMany( { _id: { $in: deteletedProject.tasks } } );
+        return Goal.deleteMany( { _id: { $in: deteletedProject.goals } } );
         
     })
     .then(() => res.json({ message: `Project with ${projectId} is removed successfully.` }))

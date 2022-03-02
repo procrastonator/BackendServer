@@ -7,7 +7,7 @@ const projectSchema = new Schema({
         required: true
       },
   description: String,
-  tasks: [{ type: Schema.Types.ObjectId, ref: 'Task' }]
+  goals: [{ type: Schema.Types.ObjectId, ref: 'Goal' }]
   // owner will be added later on
 });
 
