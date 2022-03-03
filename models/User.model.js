@@ -5,13 +5,17 @@ const userSchema = new Schema(
   {
     username: {
       type: String,
+      required: true,
     },
     email: {
       type: String,
       unique: true,
       match: [/^\S+@\S+\.\S+$/]
     },
-    password: String,
+    password:{
+      type: String,
+      required: true,
+    }
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
