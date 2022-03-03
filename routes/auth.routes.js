@@ -87,12 +87,12 @@ router.post("/signup", (req, res) => {
 });
 
 router.post("/login", (req, res, next) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
-  if (!username) {
+  if (!email) {
     return res
       .status(400)
-      .json({ errorMessage: "Please provide your username." });
+      .json({ errorMessage: "Please provide your email." });
   }
 
   // if (!email) {
@@ -110,8 +110,9 @@ router.post("/login", (req, res, next) => {
   }
 
   // Search the database for a user with the username submitted in the form
-  User.findOne({ username })
+  User.findOne({ email })
     .then((user) => {
+      console.log(user)
       // If the user isn't found, send the message that user provided wrong credentials
       if (!user) {
         return res.status(400).json({ errorMessage: "Wrong credentials." });
@@ -126,7 +127,8 @@ router.post("/login", (req, res, next) => {
 
           const payload = {
             _id: user._id,
-            username: user.username
+            username: user.username,
+            email: user.email
           }
 
           const authToken = jwt.sign(
