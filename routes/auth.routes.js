@@ -64,6 +64,7 @@ router.post("/signup", (req, res) => {
         // Create a user and save it in the database
         return User.create({
           username,
+          email,
           password: hashedPassword,
         });
       })
@@ -93,6 +94,12 @@ router.post("/login", (req, res, next) => {
       .status(400)
       .json({ errorMessage: "Please provide your username." });
   }
+
+  // if (!email) {
+  //   return res
+  //     .status(400)
+  //     .json({ errorMessage: "Please provide your email." });
+  // }
 
   // Here we use the same logic as above
   // - either length based parameters or we check the strength of a password
