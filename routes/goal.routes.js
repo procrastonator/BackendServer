@@ -5,7 +5,8 @@ const Goal = require("../models/Goal.model");
 const Project = require("../models/Project.model");
 
 router.post("/", (req, res) => {
-  console.log(goalDetails);
+  
+  
 
   const goalDetails = {
     title: req.body.title,
@@ -15,7 +16,8 @@ router.post("/", (req, res) => {
 
   Goal.create(goalDetails)
     .then((newGoal) => {
-      return Project.findByIdAndUpdate(projectId, {
+      console.log(newGoal);
+      return Project.findByIdAndUpdate(goalDetails.projectId, {
         $push: { goals: newGoal._id },
       });
     })
