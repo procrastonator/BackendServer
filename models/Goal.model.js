@@ -4,6 +4,10 @@ const { Schema, model } = mongoose;
 const goalSchema = new Schema({
   title: String,
   description: String,
+  isDone: {
+    enum: [false, true],
+    default: false,
+  },
   projectId: { type: Schema.Types.ObjectId, ref: "Project", required: true },
 });
 
