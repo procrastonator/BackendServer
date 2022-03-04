@@ -35,9 +35,6 @@ router.post("/", (req, res) => {
 });
 
 
-<<<<<<< HEAD
-
-=======
 router.get("/", (req, res, next ) => {
   Goal.find()
   .then((allGoals) => res.json(allGoals))
@@ -74,7 +71,6 @@ router.put("/:goalId/update", (req, res, next) => {
   .then((updatedGoal) => res.json(updatedGoal))
   .catch((error) => res.json(error));
 });
->>>>>>> deb3d625e5bf04b5a7881191fd6712b209c6b0bd
 
 
 module.exports = router;
