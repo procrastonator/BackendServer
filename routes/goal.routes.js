@@ -14,6 +14,7 @@ router.post("/", (req, res) => {
   const goalDetails = {
     title: req.body.title,
     description: req.body.description,
+    isDone: req.body.isDone,
     projectId: req.body.projectId,
   };
 
@@ -64,7 +65,8 @@ router.put("/:goalId/update", (req, res, next) => {
 
   const goalDetails = {
     title: req.body.title,
-    description: req.body.description
+    description: req.body.description,
+    isDone: req.body.isDone,
   };
 
   Goal.findByIdAndUpdate(goalId, goalDetails, { new: true })

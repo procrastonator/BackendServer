@@ -5,7 +5,7 @@ const goalSchema = new Schema({
   title: String,
   description: String,
   isDone: {
-    enum: [false, true],
+    type: Boolean,
     default: false,
   },
   projectId: { type: Schema.Types.ObjectId, ref: "Project", required: true },
