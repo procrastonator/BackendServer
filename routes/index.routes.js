@@ -13,11 +13,10 @@ router.get("/", (req, res, next) => {
 // /api/auth/somthing
 router.use("/auth", authRoutes);
 // /api/projects/somthing
-router.use("/projects", projectRoutes);
+router.use("/projects",isAuthenticated, projectRoutes);
 // here you lock up the route in a safty code. in isAuthenticated, 
-router.use("/goals", goalRoutes);
+router.use("/goals", isAuthenticated, goalRoutes);
 
 // , isAuthenticated
 
 module.exports = router;
-//kdkd
