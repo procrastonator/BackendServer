@@ -137,7 +137,7 @@ router.post("/login", (req, res, next) => {
           if (!isSamePassword) {
             return res.status(400).json({ errorMessage: "Wrong credentials." });
           }
-            const authToken =generateToken(user);
+            const authToken = generateToken(user);
 
           return res.json({ authToken: authToken });
            // const payload = {
