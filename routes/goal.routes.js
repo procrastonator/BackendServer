@@ -46,12 +46,16 @@ router.get("/", (req, res, next ) => {
 router.get("/:goalId", (req, res, next) => {
   const {goalId} = req.params;
 
-  if (!mongoose.Types.ObjectId.isValid(projectId)) {
+  if (!mongoose.Types.ObjectId.isValid(goalId)) {
     res.status(400).json({ message: "Specified id is not valid" });
     return;
   }
   Goal.findById(goalId)
-  .then((goal) => res.json(goal))
+  .then((goal) => {
+    console.log(goal)
+    res.json(goal)
+  })
+  
   .catch((err) => res.status(500).json(err));
 })
 
@@ -63,7 +67,8 @@ router.put("/:goalId/update", (req, res, next) => {
     res.status(400).json({ message: "Specified id is not valid" });
     return;
   }
-
+  console.log("Server:");
+  console.log(req.body);
   const goalDetails = {
     title: req.body.title,
     description: req.body.description,

@@ -9,6 +9,7 @@ router.post("/", (req, res) => {
   const projectDetails = {
     title: req.body.title,
     description: req.body.description,
+    image: req.body.image,
     goals: [],
   };
   Project.create(projectDetails)
@@ -55,6 +56,7 @@ router.put("/:projectId", (req, res, next) => {
   const projectDetails = {
     title: req.body.title,
     description: req.body.description,
+    image: req.body.image,
     goals: req.body.goals,
   };
 
