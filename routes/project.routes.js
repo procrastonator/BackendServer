@@ -4,13 +4,16 @@ const mongoose = require("mongoose");
 const Goal = require("../models/Goal.model");
 
 router.post("/", (req, res) => {
-  // console.log(req.body)
+  console.log(req.payload)
 
   const projectDetails = {
     title: req.body.title,
     description: req.body.description,
     image: req.body.image,
     goals: [],
+    userId: req.payload._id
+      
+    // userId: req.params.userId,
   };
   Project.create(projectDetails)
     .then((projectCreated) => {
@@ -58,6 +61,7 @@ router.put("/:projectId", (req, res, next) => {
     description: req.body.description,
     image: req.body.image,
     goals: req.body.goals,
+    // userId: req.body.userId,
   };
 
   Project.findByIdAndUpdate(projectId, projectDetails, { new: true })

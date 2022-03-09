@@ -8,6 +8,7 @@ const projectSchema = new Schema({
   },
   description: String,
   image: String,
+  userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
   goals: [{ type: Schema.Types.ObjectId, ref: "Goal" }],
   // owner will be added later on
 });
