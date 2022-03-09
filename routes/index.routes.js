@@ -13,9 +13,9 @@ router.get("/", (req, res, next) => {
 // /api/auth/somthing
 router.use("/auth", authRoutes);
 // /api/projects/somthing
-router.use("/projects",isAuthenticated, projectRoutes);
+router.use("/projects", projectRoutes);
 // here you lock up the route in a safty code. in isAuthenticated, 
-router.use("/goals", isAuthenticated, goalRoutes);
+router.use("/goals", goalRoutes);
 
 // , isAuthenticated
 
