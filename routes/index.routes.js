@@ -5,7 +5,7 @@ const goalRoutes = require ("./goal.routes")
 
 const { isAuthenticated } = require("../middleware/jwt.middleware"); 
 
-/* GET home page */
+
 router.get("/", (req, res, next) => {
   res.json("All good in here");
 });
@@ -17,7 +17,6 @@ router.use("/projects",isAuthenticated, projectRoutes);
 // here you lock up the route in a safty code. in isAuthenticated, 
 router.use("/goals",isAuthenticated, goalRoutes);
 
-// , isAuthenticated
 
 module.exports = router;
 //kdkd
