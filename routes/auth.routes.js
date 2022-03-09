@@ -138,17 +138,6 @@ router.post("/login", (req, res, next) => {
             const authToken = generateToken(user);
 
           return res.json({ authToken: authToken });
-           // const payload = {
-          //   _id: user._id,
-          //   username: user.username,
-          //   email: user.email
-          // }
-
-          // const authToken = jwt.sign(
-          //   payload,
-          //   process.env.TOKEN_SECRET,
-          //   { algorithm: 'HS256', expiresIn: "6h" }
-          // );
         });
     })
 
