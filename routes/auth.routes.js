@@ -89,7 +89,7 @@ router.post("/signup", (req, res) => {
         if (error.code === 11000) {
           return res.status(400).json({
             errorMessage:
-              "Username need to be unique. The username you chose is already in use.",
+              "Email already taken.",
           });
         }
         return res.status(500).json({ errorMessage: error.message });
@@ -126,14 +126,14 @@ router.post("/login", (req, res, next) => {
       console.log(user)
       // If the user isn't found, send the message that user provided wrong credentials
       if (!user) {
-        return res.status(400).json({ errorMessage: "Wrong credentials." });
+        return res.status(400).json({ errorMessage: "Email not found." });
       }
 
       // If user is found based on the username, check if the in putted password matches the one saved in the database
       bcrypt.compare(password, user.password)
         .then((isSamePassword) => {
           if (!isSamePassword) {
-            return res.status(400).json({ errorMessage: "Wrong credentials." });
+            return res.status(400).json({ errorMessage: "Wrong password." });
           }
             const authToken = generateToken(user);
 
