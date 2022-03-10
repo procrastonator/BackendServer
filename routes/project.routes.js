@@ -61,7 +61,7 @@ router.put("/:projectId", (req, res, next) => {
     description: req.body.description,
     image: req.body.image,
     goals: req.body.goals,
-    // userId: req.body.userId,
+    // userId: req.payload._id
   };
 
   Project.findByIdAndUpdate(projectId, projectDetails, { new: true })
