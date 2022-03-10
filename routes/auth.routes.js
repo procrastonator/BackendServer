@@ -84,7 +84,7 @@ router.post("/signup", (req, res) => {
       })
       .catch((error) => {
         if (error instanceof mongoose.Error.ValidationError) {
-          return res.status(400).json({ errorMessage: error.message });
+          return res.status(400).json({ errorMessage: "Invalide Email" });
         }
         if (error.code === 11000) {
           return res.status(400).json({
